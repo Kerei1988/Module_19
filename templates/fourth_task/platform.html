@@ -1,0 +1,22 @@
+{% extends "fourth_task/menu.html" %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+<body>
+    <header>
+        {% block pagename %}
+        {{ block.super }}
+        {% endblock %}
+    </header>
+    <nav>
+        {% block menu %}
+        {{ block.super }}
+        {% endblock %}
+    </nav>
+    {% block content %}
+    {{ block.super }}
+    {% endblock %}
+</body>
+</html>

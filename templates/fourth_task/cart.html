@@ -1,0 +1,25 @@
+{% extends "fourth_task/menu.html" %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+</head>
+<body>
+    <header>
+        {% block pagename %}
+        <h1>Корзина</h1>
+        {% endblock %}
+    </header>
+    <menu>
+        {% block menu %}
+            <p><a href="/platform">Главная страница</a></p>
+            <p><a href="/games">Магазин</a></p>
+            <p><a href="/cart">Корзина</a></p>
+        {% endblock %}
+    </menu>
+    {% block content %}
+    <h2>Извините, ваша корзина пуста</h2>
+    {% endblock %}
+</body>
+</html>

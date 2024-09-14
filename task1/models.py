@@ -2,10 +2,16 @@ from django.db import models
 
 
 # Create your models here.
+
 class Buyer(models.Model):
     name = models.CharField(max_length=20, name='username')
     balance = models.DecimalField(max_digits=20, decimal_places=2)
     age = models.IntegerField()
+    objects = models.Manager()
+
+    def __str__(self):
+        return self.username
+
 
 
 class Game(models.Model):
@@ -15,5 +21,8 @@ class Game(models.Model):
     description = models.TextField()
     buyer = models.ManyToManyField(Buyer, related_name='owner')
     age_limited = models.BooleanField(default=False)
+    objects = models.Manager()
 
+    # def __str__(self):
+    #     return self.title
 
