@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device width initial-scale=1.0 ">
+    <meta http-equiv="X-UA-Compatible">
+    <title>Posts</title>
+</head>
+<body>
+    <form action="" method="get" >
+        <select name="paginate_by">
+            <option value="" selected disabled hidden>Количество постов</option>
+            {% for num in num_post %}
+            <option>{{num}}</option>
+            {%endfor%}
+        </select>
+        <input type="submit" value="выбрать" />
+    </form>
+{% for post in page_obj %}
+    <h1>{{post.title}}</h1>
+    <h4>{{post.content}}</h4>
+    <p>{{post.create_date}}</p>
+{% endfor %}
+    {% if page_obj.has_other_pages %}
+    <nav aria-label="Page navigation" >
+        {% if page_obj.has_previous %}
+            <a class="page_link" href="?paginate_by={{paginate_by}}&page={{ page_obj.previous_page_number }}&">&lt;Назад</a>
+        {% else %}
+            <span>&lt;Назад</span>
+        {% endif %}
+
+        {% for n in page_obj.paginator.page_range %}
+            {% if page_obj.number == n %}
+                <a href="#">{{n}}</a>
+            {% else %}
+                <a href="?paginate_by={{paginate_by}}&page={{ n }}">{{ n }}</a>
+            {% endif %}
+        {% endfor %}}
+
+        {% if page_obj.has_next %}
+            <a href="?paginate_by={{paginate_by}}&page={{ page_obj.next_page_number }}">Вперед&gt;</a>
+        {% else %}
+            <span>&lt;Вперед</span>
+        {% endif %}
+    {% endif %}
+       </ul>
+    </nav>
+</body>
+</html>

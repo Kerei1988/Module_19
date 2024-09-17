@@ -23,6 +23,6 @@ class Game(models.Model):
     age_limited = models.BooleanField(default=False)
     objects = models.Manager()
 
-    # def __str__(self):
-    #     return self.title
+    def __str__(self):
+        return self.title
 
