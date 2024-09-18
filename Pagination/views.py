@@ -19,6 +19,6 @@ def page(request):
         'page_obj': page_obj,
         'posts': posts,
         'paginate_by': per_page,
-        'num_post': num_post
+        'num_post': num_post,
     }
     return render(request, 'paginator/page.html', context)

@@ -28,19 +28,17 @@
         {% else %}
             <span>&lt;Назад</span>
         {% endif %}
-
         {% for n in page_obj.paginator.page_range %}
             {% if page_obj.number == n %}
-                <a href="#">{{n}}</a>
-            {% else %}
+                <span>{{n}}</span>
+            {% elif n > page_obj.number|add:-3 and n <= page_obj.number|add:2 %}
                 <a href="?paginate_by={{paginate_by}}&page={{ n }}">{{ n }}</a>
             {% endif %}
-        {% endfor %}}
-
+        {% endfor %}
         {% if page_obj.has_next %}
             <a href="?paginate_by={{paginate_by}}&page={{ page_obj.next_page_number }}">Вперед&gt;</a>
         {% else %}
-            <span>&lt;Вперед</span>
+            <span>Вперед&gt;</span>
         {% endif %}
     {% endif %}
        </ul>
